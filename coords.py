@@ -7,10 +7,17 @@ screen = pg.display.set_mode(size)
 COLOR_INACTIVE = pg.Color('gray')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
 FONT = pg.font.Font(None, 32)
-
+nx, ny = '', ''
+f = open('coordinates.txt')
+for n, i in enumerate(f):
+    if n == 0:
+        nx = i.strip('\n')
+    else:
+        ny = i.strip('\n')
+f.close()
+coords = [float(nx), float(ny)]
 
 class InputBox:
-
     def __init__(self, x, y, w, h, text=''):
         self.rect = pg.Rect(x, y, w, h)
         self.color = COLOR_INACTIVE
@@ -89,5 +96,11 @@ def main():
         drawY(screen)
         pg.display.flip()
         clock.tick(30)
-        with open('cordinats.txt', 'w') as cords:
-            print(coords, file=cords)
+        with open('coordinates.txt', 'w') as cords:
+            try:
+                print(float(coords[0]), file=cords)
+                print(float(coords[1]), file=cords)
+            except:
+                pass
+    import hello
+main()
