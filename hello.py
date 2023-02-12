@@ -91,7 +91,102 @@ while running:
                         topleft=(550, 400))
                 screen.blit(minus, g_l_r)
                 pygame.display.flip()
-
+            if event.key == pygame.K_LEFT:
+                nnx = float(nx)
+                if nnx > -180:
+                    nnx -= 0.1
+                nx = str(nnx)
+                map_request = f"https://static-maps.yandex.ru/1.x/?ll={nx}%2C{ny}&z={z}&l=sat"
+                response = requests.get(map_request)
+                if not response:
+                    print("Ошибка выполнения запроса:")
+                    print(map_request)
+                    print("Http статус:", response.status_code, "(", response.reason, ")")
+                    sys.exit(1)
+                map_file = "map.png"
+                with open(map_file, "wb") as file:
+                    file.write(response.content)
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                g_l_r = plus.get_rect(
+                        topleft=(550, 0))
+                screen.blit(plus, g_l_r)
+                g_l_r = minus.get_rect(
+                        topleft=(550, 400))
+                screen.blit(minus, g_l_r)
+                pygame.display.flip()
+            if event.key == pygame.K_RIGHT:
+                nnx = float(nx)
+                if nnx < 180:
+                    nnx += 0.1
+                nx = str(nnx)
+                map_request = f"https://static-maps.yandex.ru/1.x/?ll={nx}%2C{ny}&z={z}&l=sat"
+                response = requests.get(map_request)
+                if not response:
+                    print("Ошибка выполнения запроса:")
+                    print(map_request)
+                    print("Http статус:", response.status_code, "(", response.reason, ")")
+                    sys.exit(1)
+                map_file = "map.png"
+                with open(map_file, "wb") as file:
+                    file.write(response.content)
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                g_l_r = plus.get_rect(
+                        topleft=(550, 0))
+                screen.blit(plus, g_l_r)
+                g_l_r = minus.get_rect(
+                        topleft=(550, 400))
+                screen.blit(minus, g_l_r)
+                pygame.display.flip()
+            if event.key == pygame.K_DOWN:
+                nny = float(ny)
+                if nny > -180:
+                    nny -= 0.1
+                ny = str(nny)
+                map_request = f"https://static-maps.yandex.ru/1.x/?ll={nx}%2C{ny}&z={z}&l=sat"
+                response = requests.get(map_request)
+                if not response:
+                    print("Ошибка выполнения запроса:")
+                    print(map_request)
+                    print("Http статус:", response.status_code, "(", response.reason, ")")
+                    sys.exit(1)
+                map_file = "map.png"
+                with open(map_file, "wb") as file:
+                    file.write(response.content)
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                g_l_r = plus.get_rect(
+                        topleft=(550, 0))
+                screen.blit(plus, g_l_r)
+                g_l_r = minus.get_rect(
+                        topleft=(550, 400))
+                screen.blit(minus, g_l_r)
+                pygame.display.flip()
+            if event.key == pygame.K_UP:
+                nny = float(ny)
+                if nny < 180:
+                    nny += 0.1
+                ny = str(nny)
+                map_request = f"https://static-maps.yandex.ru/1.x/?ll={nx}%2C{ny}&z={z}&l=sat"
+                response = requests.get(map_request)
+                if not response:
+                    print("Ошибка выполнения запроса:")
+                    print(map_request)
+                    print("Http статус:", response.status_code, "(", response.reason, ")")
+                    sys.exit(1)
+                map_file = "map.png"
+                with open(map_file, "wb") as file:
+                    file.write(response.content)
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                screen.blit(pygame.image.load(map_file), (0, 0))
+                g_l_r = plus.get_rect(
+                        topleft=(550, 0))
+                screen.blit(plus, g_l_r)
+                g_l_r = minus.get_rect(
+                        topleft=(550, 400))
+                screen.blit(minus, g_l_r)
+                pygame.display.flip()
         if event.type == pygame.MOUSEBUTTONUP:
             x, y = event.pos
             if x > 550:
